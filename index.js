@@ -35,6 +35,7 @@ const io = socket(server, {
   },
 });
 
+
 global.onlineUsers = new Map();
 io.on("connection", (socket) => {
   global.chatSocket = socket;
@@ -49,3 +50,10 @@ io.on("connection", (socket) => {
     }
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+  });
+}
