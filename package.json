@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "server": "nodemon index.js",
-    "public": "cd ../public && npm run start",
+    "client": "cd client && npm run start",
     "server-install": "npm install",
-    "public-install": "cd ../public && npm install",
-    "install-all": "concurrently \"npm run server-install\" \"npm run public-install\"",
-    "dev": "concurrently \"npm run server\" \"npm run public\"",
-    "heroku-postbuild": "cd ../public && npm install && npm run build"
+    "client-install": "cd client && npm install",
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
