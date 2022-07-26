@@ -5,17 +5,27 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon server.js",
+    "public": "cd ../public && npm run start",
+    "server-install": "npm install",
+    "public-install": "cd ../public && npm install",
+    "install-all": "concurrently \"npm run server-install\" \"npm run public-install\"",
+    "dev": "concurrently \"npm run server\" \"npm run public\"",
+    "heroku-postbuild": "cd ../public && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^7.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "mongoose": "^6.2.1",
     "nodemon": "^2.0.15",
     "socket.io": "^4.4.1"
+  },
+  "engines": {
+    "node": "16.14.0"
   }
 }
